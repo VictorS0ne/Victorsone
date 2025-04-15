@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+
+  <style type="text/css">
+    * {
+      margin: 0px;
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+
+
+
+
+    .Folder {
+      width: 170px;
+
+    }
+
+
+
+    .Box_folder {
+
+      background-color: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      cursor: pointer;
+
+
+
+      height: 147px;
+      width: 170px;
+    }
+
+
+
+
+
+
+    .Btn_folder {
+      background-image: url(Folder.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 20%;
+      width: 100%;
+      background-color: transparent;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .Btn_folder:active {
+      background-image: url(Folder_b.png);
+    }
+
+    #menu {
+      /*background-color: #0b0e0ee0;*/
+      width: 100%;
+      height: 100%;
+
+      /*border-color: #adfff5;
+	border-style: solid;
+	visibility: hidden;*/
+    }
+
+    .Text_folder {
+      padding-top: 3px;
+      font-size: 17px;
+      color: #adfff5;
+    }
+
+
+
+    .Line {
+      height: 25%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+
+    .Box_folder_ {
+      width: 100px;
+      height: 70px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      /* muda o cursor ao passar */
+    }
+
+
+    .Img_folder_ {
+      width: 100%;
+      height: 100%;
+    }
+
+
+    #modal {
+      position: absolute;
+
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+
+
+
+      /* Efeito Card */
+
+      perspective: 1000px;
+      /* Efeito Card */
+
+    }
+
+    #window {
+      position: absolute;
+      background-color: #000000e8;
+      width: 87%;
+      height: 87%;
+      display: flex;
+      flex-direction: column;
+
+
+
+      /* Efeito Card */
+
+
+      border-radius: 20px;
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: transform 0.1s ease;
+      transform-style: preserve-3d;
+      /* Efeito Card */
+    }
+
+    #window-top {
+      width: 100%;
+      height: 10%;
+      display: flex;
+      flex-direction: row-reverse;
+    }
+
+    #window-bottom {
+      display: flex;
+      flex-direction: column;
+      margin-left: 100px;
+      margin-top: 30px;
+      font-size: 25px;
+      height: 90%;
+      width: 100%;
+    }
+
+    #window,
+    #window-top,
+    #window-bottom {
+      border-radius: 5px;
+    }
+
+    #close_btn {
+      background-color: transparent;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+      font-size: 20px;
+      color: #adfff5;
+      border: 1px solid #adfff5;
+      width: 10%;
+      height: 100%;
+    }
+
+    a {
+      color: #adfff5;
+      text-decoration: none
+    }
+
+
+    #iframe_{
+      width: 90%;
+      height: 100%;
+      border: 0px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <div id="modal">
+    <div id="window" class="card">
+
+      <div id="window-top">
+        <button id="close_btn" onclick="close_btn()">X</button>
+      </div>
+
+      <div id="window-bottom">
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- <button onclick="enviarEventoParaPai()">Voltar</button> -->
+  <div id="menu">
+
+
+
+
+
+
+
+
+    <div class="Line">
+
+
+
+
+
+
+      <div class="Box_folder_">
+
+        <img class="Img_folder_" src="Folder.png" onclick="DSI_NOTURNO()">
+        <p class="Text_folder"> DSI Noturno </p>
+
+      </div>
+
+
+
+
+      <div class="Box_folder_">
+        <a href="https://miro.com/app/board/uXjVLjrnz-s=/" target="_blank">
+          <img class="Img_folder_" src="Folder.png">
+        </a>
+        <p class="Text_folder">Sedu 2</p>
+      </div>
+
+
+
+      <div class="Box_folder_">
+        <img class="Img_folder_" src="Folder.png" onclick="DDS4()">
+        <p class="Text_folder">DDS4 2</p>
+      </div>
+
+
+
+
+
+      <div class="Box_folder_">
+        <a href="https://pass-provider005.replit.app/" target="_blank">
+          <img class="Img_folder_" src="Folder.png">
+        </a>
+        <p class="Text_folder">[ Pass ]</p>
+      </div>
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+      
+      <div class="Box_folder_">
+
+      </div>
+
+
+      <div class="Box_folder_">
+
+        <img class="Img_folder_" src="Folder.png" onclick="Sound()">
+
+        <p class="Text_folder">Nova Pasta(1)</p>
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="Line">
+
+
+      <div class="Box_folder_">
+        <a href="https://miro.com/app/board/uXjVM4Xf4o8=/" target="_blank">
+          <img class="Img_folder_" src="Folder.png">
+        </a>
+        <p class="Text_folder">DDS1</p>
+      </div>
+
+
+
+
+      <div class="Box_folder_">
+        <a href="https://miro.com/app/board/uXjVMyhyNYs=/" target="_blank">
+          <img class="Img_folder_" src="Folder.png">
+        </a>
+        <p class="Text_folder">DDS2</p>
+      </div>
+
+
+
+      <div class="Box_folder_">
+        <a href="https://miro.com/app/board/uXjVM5Ijn-4=/?share_link_id=442084183142" target="_blank">
+          <img class="Img_folder_" src="Folder.png">
+        </a>
+        <p class="Text_folder">MANAS</p>
+      </div>
+
+
+
+
+      <div class="Box_folder_">
+        <a href="https://miro.com/app/board/uXjVIGROIDU=/?share_link_id=153877228606" target="_blank">
+          <img class="Img_folder_" src="Folder.png">
+        </a>
+        <p class="Text_folder">PASS documentacao</p>
+      </div>
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+      <div class="Box_folder_">
+
+      </div>
+
+      
+      <div class="Box_folder_">
+
+      </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="Line">
+
+      
+      <div class="Box_folder_">
+
+      </div>
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+      <div class="Box_folder_">
+
+      </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="Line">
+
+
+
+      <div class="Box_folder_">
+
+      </div>
+      
+      <div class="Box_folder_">
+
+      </div>
+
+
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+
+      <div class="Box_folder_">
+
+      </div>
+
+
+      <div class="Box_folder_">
+
+        <img class="Img_folder_" src="Trash.png">
+
+        <p class="Text_folder">Lixeira</p>
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <script type="text/javascript">
+
+
+
+
+
+      function Click(param1) {
+        window.location.href = param1;
+      }
+
+
+      function close_btn() {
+        document.getElementById("modal").style.visibility = "hidden";
+      }
+
+      function DSI_NOTURNO() {
+
+        var contexto = "";
+
+        contexto += `<a href="https://miro.com/app/board/uXjVKu-lKNQ=/" target="_blank"> NOTURNO 1</a> <br>`
+        contexto += `<a href="https://miro.com/app/board/uXjVLjRiM2w=/" target="_blank"> NOTURNO 2</a> <br>`;
+
+        $('#window-bottom').empty();
+        $("#window-bottom").append(contexto);
+
+        document.getElementById("modal").style.visibility = "visible";
+      }
+
+
+      function DDS4() {
+
+        var contexto = "";
+
+        contexto += `<a href="https://miro.com/app/board/uXjVLb6COJM=/" target="_blank">[ DDS4 1 ]</a> <br>`
+        contexto += `<a href="https://miro.com/app/board/uXjVLoNHBCw=/" target="_blank">[ DDS4 2 ]</a> <br>`;
+
+        $('#window-bottom').empty();
+        $("#window-bottom").append(contexto);
+
+        document.getElementById("modal").style.visibility = "visible";
+      }
+
+
+
+      
+      function Sound() {
+
+        var contexto = "";
+
+        contexto += `<iframe id="iframe_" src="Sound.html"></iframe>`
+
+        $('#window-bottom').empty();
+        $("#window-bottom").append(contexto);
+
+        document.getElementById("modal").style.visibility = "visible";
+        
+      }
+
+
+    </script>
+
+    <script>
+      const card = document.getElementById('modal');
+      const inner = document.getElementById('window');
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -3; // inverte pra parecer natural
+        const rotateY = ((x - centerX) / centerX) * 3;
+
+        inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      });
+    </script>
+
+</body>
+
+</html>
